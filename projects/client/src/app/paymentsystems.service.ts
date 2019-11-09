@@ -8,7 +8,7 @@ import {PaymentSystem} from './models/payment_system';
 
 export class PaymentSystemsService {
 
-  constructor(private http: HttpClient) {}
+  constructor(protected http: HttpClient) {}
 
   getSystems(): Promise<PaymentSystem[]> {
     window.dispatchEvent(new Event('loadingBarStart'));

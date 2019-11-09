@@ -6,7 +6,7 @@ import {ServerLocale} from './models/server_locale';
   providedIn: 'root'
 })
 export class ServerLocalesService {
-  constructor(private http: HttpClient) {}
+  constructor(protected http: HttpClient) {}
 
   getLocales(): Promise<ServerLocale[]> {
     return this.http.get(`/api/locales`)

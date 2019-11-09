@@ -10,6 +10,10 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsEditComponent } from './products-edit/products-edit.component';
 import { CheckoutsListComponent } from './checkouts-list/checkouts-list.component';
 import { CheckoutsShowComponent } from './checkouts-show/checkouts-show.component';
+import { ConfigListComponent } from './settings/config-list/config-list.component';
+import { SettingsComponent } from './settings/settings.component';
+import { LocalesListComponent } from './settings/locales-list/locales-list.component';
+import { PaymentSystemsListComponent } from './settings/payment-systems-list/payment-systems-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { CheckoutsShowComponent } from './checkouts-show/checkouts-show.componen
     ProductsListComponent,
     ProductsEditComponent,
     CheckoutsListComponent,
-    CheckoutsShowComponent
+    CheckoutsShowComponent,
+    ConfigListComponent,
+    SettingsComponent,
+    LocalesListComponent,
+    PaymentSystemsListComponent
   ],
   imports: [
     BrowserModule,

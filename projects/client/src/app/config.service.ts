@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,10 @@ export class ConfigService {
     return array.reduce((obj, item) => {
       obj[item.property] = item.value;
       return obj;
-    }, {})
+    }, {});
   }
 
-  get(): Promise<Object> {
+  get(): Promise<object> {
     return this.http.get(`/api/configs`)
       .toPromise()
       .then(v => this.objectify(v));
