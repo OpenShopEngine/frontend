@@ -6,15 +6,15 @@
     <mat-card-content>
       <mat-form-field appearance="outline">
         <mat-label>Full name</mat-label>
-        <input matInput placeholder="Full name" [value]="checkout.fullname || ''" required disabled>
+        <input matInput placeholder="Full name" [value]="checkout.fullname || ''" required readonly>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Address</mat-label>
-        <textarea matInput placeholder="Address" [value]="checkout.address || ''" required disabled></textarea>
+        <textarea matInput placeholder="Address" [value]="checkout.address || ''" required readonly></textarea>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Phone</mat-label>
-        <input matInput placeholder="Phone" [value]="checkout.phone || ''" required disabled>
+        <input matInput placeholder="Phone" [value]="checkout.phone || ''" required readonly>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Status</mat-label>
