@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
       .then(v => {
         if (!v) {
           this.router.navigateByUrl('/admin/login');
+        } else {
+          this.router.navigateByUrl('/admin/products');
         }
       });
   }

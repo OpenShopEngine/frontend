@@ -9,12 +9,11 @@ import {CheckoutsShowComponent} from './checkouts-show/checkouts-show.component'
 
 
 export const adminRoutes: Routes = [
-  {path: '', component: AppComponent, children: [
-      {path: 'products', component: ProductsListComponent},
-      {path: 'products/:id', component: ProductsEditComponent},
-      {path: 'checkouts', component: CheckoutsListComponent},
-      {path: 'checkouts/:id', component: CheckoutsShowComponent},
-    ]},
+  {path: '', component: AppComponent},
+  {path: 'products', component: ProductsListComponent},
+  {path: 'products/:id', component: ProductsEditComponent},
+  {path: 'checkouts', component: CheckoutsListComponent},
+  {path: 'checkouts/:id', component: CheckoutsShowComponent},
   {path: 'login', component: LoginComponent},
 ];
 
