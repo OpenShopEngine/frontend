@@ -1,0 +1,7 @@
+<div *ngIf="isShowed" class="disclaimer">
+  {{disclaimer}}
+</div>
+<div *ngIf="!isShowed" class="disclaimer">
+  {{disclaimerFalse}}
+</div>
+<ng-content *ngIf="isShowed"></ng-content>

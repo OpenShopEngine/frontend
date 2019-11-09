@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <!-- Product card -->
+      <trans-unit id="learn-more" datatype="html">
+        <source>LEARN MORE</source>
+        <target>УЗНАТЬ БОЛЬШЕ</target>
+      </trans-unit>
+      <trans-unit id="add-to-cart" datatype="html">
+        <source>ADD TO CART</source>
+        <target>ДОБАВИТЬ В КОРЗИНУ</target>
+      </trans-unit>
+      <trans-unit id="open-cart" datatype="html">
+        <source>OPEN CART</source>
+        <target>ОТКРЫТЬ КОРЗИНУ</target>
+      </trans-unit>
+      <trans-unit id="photo-of-product" datatype="html">
+        <source>Photo of product</source>
+        <target>Фотография продукта</target>
+      </trans-unit>
+      <trans-unit id="product-available" datatype="html">
+        <source>available</source>
+        <target>доступно</target>
+      </trans-unit>
+      <trans-unit id="product-preorder-only" datatype="html">
+        <source>preorder-only</source>
+        <target>только предзаказ</target>
+      </trans-unit>
+
+      <!-- Cart -->
+      <trans-unit id="cart-products-title" datatype="html">
+        <source>Products</source>
+        <target>Продукты</target>
+      </trans-unit>
+      <trans-unit id="cart-clean" datatype="html">
+        <source>CART CLEAN</source>
+        <target>ОЧИСТИТЬ КОРЗИНУ</target>
+      </trans-unit>
+      <trans-unit id="cart-total-title" datatype="html">
+        <source>Total</source>
+        <target>Итог</target>
+      </trans-unit>
+      <trans-unit id="cart-total-items" datatype="html">
+        <source>{cartService.getCount(), plural, =0 {no items} =1 {one item} other {<x id="INTERPOLATION" equiv-text="{{cartService.getCount()}}"/> items} }</source>
+        <target>{cartService.getCount(), plural, =0 {нет товаров} one {один товар} two {два товара} few {<x id="INTERPOLATION" equiv-text="{{cartService.getCount()}}"/> товара} many {<x id="INTERPOLATION" equiv-text="{{cartService.getCount()}}"/> товаров} other {<x id="INTERPOLATION" equiv-text="{{cartService.getCount()}}"/> товаров} }</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-stepper-next" datatype="html">
+        <source>Next</source>
+        <target>Далее</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-stepper-back" datatype="html">
+        <source>Back</source>
+        <target>Назад</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-stepper-pay" datatype="html">
+        <source>Pay</source>
+        <target>Оплатить</target>
+      </trans-unit>
+      <!-- Checkout restrictions -->
+      <trans-unit id="cart-checkout-experimental-active-false" datatype="html">
+        <source>Seems like owner disabled checkout feature.</source>
+        <target>Кажется владелец отключил функцию заказа.</target>
+      </trans-unit>
+
+      <trans-unit id="cart-checkout-stepper-title1" datatype="html">
+        <source>Enter your information</source>
+        <target>Введите информацию о себе</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-firstname-placeholder" datatype="html">
+        <source>First Name</source>
+        <target>Имя</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-lastname-placeholder" datatype="html">
+        <source>Last Name</source>
+        <target>Фамилия</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-phone-placeholder" datatype="html">
+        <source>Phone</source>
+        <target>Телефон</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-email-placeholder" datatype="html">
+        <source>Email</source>
+        <target>Электронная почта</target>
+      </trans-unit>
+
+      <trans-unit id="cart-checkout-stepper-title2" datatype="html">
+        <source>Fill out your address</source>
+        <target>Адрес доставки</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-address-street" datatype="html">
+        <source>Street</source>
+        <target>Улица</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-address-house" datatype="html">
+        <source>House</source>
+        <target>Дом</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-address-building" datatype="html">
+        <source>Building</source>
+        <target>Корпус/здание</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-address-apt" datatype="html">
+        <source>Apartment</source>
+        <target>Квартира</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-address-city" datatype="html">
+        <source>City</source>
+        <target>Город</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-address-province" datatype="html">
+        <source>Province/State</source>
+        <target>Провинция/Штат</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-address-country" datatype="html">
+        <source>Country</source>
+        <target>Страна</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-address-postcode" datatype="html">
+        <source>Postcode</source>
+        <target>Индекс</target>
+      </trans-unit>
+
+      <trans-unit id="cart-checkout-stepper-title3" datatype="html">
+        <source>Payment</source>
+        <target>Оплата</target>
+      </trans-unit>
+      <trans-unit id="cart-checkout-payment-text" datatype="html">
+        <source>Please, select payment system to proceed checkout.</source>
+        <target>Пожалуйста, выберите платежную систему для обработки платежа.</target>
+      </trans-unit>
+
+      <!-- Processing checkout -->
+      <trans-unit id="checkout-processing" datatype="html">
+        <source>Processing your checkout...</source>
+        <target>Обработка вашего заказа...</target>
+      </trans-unit>
+      <trans-unit id="checkout-processed-successfully" datatype="html">
+        <source>Your checkout has been successfully processed!</source>
+        <target>Ваш заказ успешно обработан!</target>
+      </trans-unit>
+      <trans-unit id="checkout-processed-id" datatype="html">
+        <source>Your checkout ID is</source>
+        <target>Ваш идентификатор заказа</target>
+      </trans-unit>
+
+      <trans-unit id="cart-nothing-title" datatype="html">
+        <source>There is nothing in your cart!</source>
+        <target>В корзине ничего нет!</target>
+      </trans-unit>
+      <trans-unit id="cart-nothing-text" datatype="html">
+        <source>Go to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>the product list<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+        <target>Перейти в <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>список товаров<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></target>
+      </trans-unit>
+
+      <!-- Cart item -->
+      <trans-unit id="cart-item-quantity" datatype="html">
+        <source>Quantity</source>
+        <target>Количество</target>
+      </trans-unit>
+      <trans-unit id="cart-item-preorder" datatype="html">
+        <source>Preorder</source>
+        <target>Предзаказ</target>
+      </trans-unit>
+
+
+      <!-- Checkout status -->
+      <trans-unit id="checkout-id" datatype="html">
+        <source>Checkout ID</source>
+        <target>Идентификатор заказа</target>
+      </trans-unit>
+      <trans-unit id="checkout-information-title" datatype="html">
+        <source>Checkout Information</source>
+        <target>Информация о заказе</target>
+      </trans-unit>
+      <trans-unit id="checkout-status-fetching-information-error" datatype="html">
+        <source>Something went wrong with fetching checkout information!</source>
+        <target>Что-то пошло не так при запросе данных о заказе!</target>
+      </trans-unit>
+      <!-- queue -->
+      <trans-unit id="checkout-status-queue-title" datatype="html">
+        <source>Your order is in queue!</source>
+        <target>Ваш заказ в очереди!</target>
+      </trans-unit>
+      <trans-unit id="checkout-status-queue-description" datatype="html">
+        <source>We will start proceeding your checkout as soon as possible. Please, wait.</source>
+        <target>Мы начнем оформление заказа как можно скорее. Пожалуйста, подождите.</target>
+      </trans-unit>
+      <!-- received -->
+      <trans-unit id="checkout-status-received-title" datatype="html">
+        <source>We have received your order!</source>
+        <target>Мы получили ваш заказ!</target>
+      </trans-unit>
+      <trans-unit id="checkout-status-received-description" datatype="html">
+        <source>We will start processing your checkout as soon as possible. Please, wait.</source>
+        <target>Мы начнем обработку вашего заказа как можно скорее. Пожалуйста, подождите.</target>
+      </trans-unit>
+      <!-- packed -->
+      <trans-unit id="checkout-status-packed-title" datatype="html">
+        <source>Your order is packed!</source>
+        <target>Ваш заказ упакован!</target>
+      </trans-unit>
+      <trans-unit id="checkout-status-packed-description" datatype="html">
+        <source>We packed your order. We will send it to you soon. Please, wait.</source>
+        <target>Мы упаковали ваш заказ. Мы отправим его вам в ближайшее время. Пожалуйста, подождите.</target>
+      </trans-unit>
+      <!-- sent -->
+      <trans-unit id="checkout-status-sent-title" datatype="html">
+        <source>Your order is sent!</source>
+        <target>Ваш заказ отправлен!</target>
+      </trans-unit>
+      <trans-unit id="checkout-status-sent-description" datatype="html">
+        <source>We sent your order. Thanks for your purchase! Please wait until delivery.</source>
+        <target>Мы отправили ваш заказ. Спасибо за покупку! Пожалуйста, подождите до доставки.</target>
+      </trans-unit>
+      <trans-unit id="checkout-status-tracking-number" datatype="html">
+        <source>Tracking number</source>
+        <target>Номер отслеживания</target>
+      </trans-unit>
+
+      <trans-unit id="checkout-status-fetching-information" datatype="html">
+        <source>Fetching information about checkout</source>
+        <target>Получение информации о заказе</target>
+      </trans-unit>
+
+
+      <!-- Sidenav -->
+      <trans-unit id="sidenav-cart-title" datatype="html">
+        <source>Cart</source>
+        <target>Корзина</target>
+      </trans-unit>
+      <trans-unit id="sidenav-language-title" datatype="html">
+        <source>Language</source>
+        <target>Язык</target>
+      </trans-unit>
+      <trans-unit id="sidenav-checkout-status-title" datatype="html">
+        <source>Checkout Status</source>
+        <target>Статус заказа</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

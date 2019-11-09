@@ -1,0 +1,23 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{product.name}}</mat-card-title>
+    <mat-card-subtitle>{{currency}} {{product.price}}
+      <span *ngIf="amountAvailable() > 0">(<span i18n="@@product-available">available</span>: {{amountAvailable()}})</span>
+      <span *ngIf="amountAvailable() < 1">(<span i18n="@@product-preorder-only">preorder-only</span>)</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="/api/products/{{product.id}}/photo?size=500" i18n-alt="@@photo-of-product" alt="Photo of product" class="card-img">
+  <mat-card-content>
+    <p>
+      {{product.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="!addedToTheCart" mat-button color="primary" (click)="addToCart()" i18n="@@add-to-cart">ADD TO CART</button>
+    <button *ngIf="addedToTheCart" mat-button color="primary" routerLink="/cart" i18n="@@open-cart">OPEN CART</button>
+    <button mat-button i18n="@@learn-more">LEARN MORE</button>
+    <button mat-button *ngIf="isAdmin" routerLink="/admin/products/{{product.id}}">
+      EDIT
+    </button>
+  </mat-card-actions>
+</mat-card>

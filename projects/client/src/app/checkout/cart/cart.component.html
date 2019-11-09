@@ -1,0 +1,119 @@
+<mat-card *ngIf="processingCheckout || isProcessedCheckout">
+  <div *ngIf="!isProcessedCheckout">
+    <h2 i18n="@@checkout-processing">Processing your checkout...</h2>
+    <mat-spinner mode="indeterminate" [diameter]="30"></mat-spinner>
+  </div>
+  <div>
+    <h2 *ngIf="isProcessedCheckout" i18n="@@checkout-processed-successfully">Your checkout has been successfully processed!</h2>
+    <p><span i18n="@@checkout-processed-id">Your checkout ID is</span> #{{processedCheckout.id}}</p>
+  </div>
+</mat-card>
+
+<mat-card *ngIf="cartPositions.length > 0">
+  <mat-list>
+    <mat-list-item>
+      <h3 mat-line i18n="@@cart-products-title">Products</h3>
+      <a mat-icon-button (click)="cleanCart()" aria-hidden="false" i18n-aria-label="@@cart-clean" aria-label="CART CLEAN" i18n-matTooltip="@@cart-clean" matTooltip="CART CLEAN">
+        <mat-icon matBadgeColor="accent">remove_shopping_cart</mat-icon>
+      </a>
+    </mat-list-item>
+    <app-cart-item *ngFor="let position of cartPositions" [position]="position" [callback]="fetchItems" [currency]="config['general.currency']"></app-cart-item>
+    <mat-divider></mat-divider>
+    <h3 mat-subheader i18n="@@cart-total-title">Total</h3>
+    <mat-list-item>
+      <div>
+        <p mat-line i18n="@@cart-total-items">
+          {cartService.getCount(), plural, =0 {no items} =1 {1 item} other {{{cartService.getCount()}} items}}
+        </p>
+        <p mat-line>
+          {{config['general.currency']}} {{totalPrice()}}
+        </p>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+<mat-card *ngIf="cartPositions.length > 0">
+  <app-content-restrictor
+    property="client.experimental.features.checkout"
+    disclaimerFalse="Seems like owner disabled checkout feature."
+    i18n-disclaimerFalse="@@cart-checkout-experimental-active-false">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="accountFormGroup">
+        <form [formGroup]="accountFormGroup">
+          <ng-template matStepLabel i18n="@@cart-checkout-stepper-title1">Enter your information</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="First Name" formControlName="firstname" required i18n-placeholder="@@cart-checkout-firstname-placeholder">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last Name" formControlName="lastname" required i18n-placeholder="@@cart-checkout-lastname-placeholder">
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <input matInput placeholder="Phone" formControlName="phone" required i18n-placeholder="@@cart-checkout-phone-placeholder" type="tel">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email" required i18n-placeholder="@@cart-checkout-email-placeholder" type="email">
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext i18n="@@cart-checkout-stepper-next">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="addressFormGroup">
+        <form [formGroup]="addressFormGroup">
+          <ng-template matStepLabel i18n="@@cart-checkout-stepper-title2">Fill out your address</ng-template>
+          <mat-form-field>
+            <input matInput i18n-placeholder="@@cart-checkout-address-street" placeholder="Street" formControlName="street" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput i18n-placeholder="@@cart-checkout-address-house" placeholder="House" formControlName="house" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput i18n-placeholder="@@cart-checkout-address-building" placeholder="Building" formControlName="building">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput i18n-placeholder="@@cart-checkout-address-apt" placeholder="Apartment" formControlName="apt">
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <input matInput i18n-placeholder="@@cart-checkout-address-city" placeholder="City" formControlName="city" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput i18n-placeholder="@@cart-checkout-address-province" placeholder="Province/State" formControlName="province" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput i18n-placeholder="@@cart-checkout-address-country" placeholder="Country" formControlName="country" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput i18n-placeholder="@@cart-checkout-address-postcode" placeholder="Postcode" formControlName="postcode" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious i18n="@@cart-checkout-stepper-back">Back</button>
+            <button mat-button matStepperNext i18n="@@cart-checkout-stepper-next">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="paymentFormGroup">
+        <form [formGroup]="paymentFormGroup">
+          <ng-template matStepLabel i18n="@@cart-checkout-stepper-title3">Payment</ng-template>
+          <p i18n="@@cart-checkout-payment-text">Please, select payment system to proceed checkout.</p>
+          <mat-form-field>
+            <mat-select formControlName="paymentSystem">
+              <mat-option *ngFor="let system of paymentSystems" [value]="system.id">
+                {{system.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious i18n="@@cart-checkout-stepper-back">Back</button>
+            <button mat-button matStepperNext i18n="@@cart-checkout-stepper-pay" (click)="checkout()">Pay</button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </app-content-restrictor>
+</mat-card>
+<mat-card *ngIf="cartPositions.length === 0">
+  <h2 i18n="@@cart-nothing-title">There is nothing in your cart!</h2>
+  <p i18n="@@cart-nothing-text">Go to <a routerLink="/">the product list</a></p>
+</mat-card>

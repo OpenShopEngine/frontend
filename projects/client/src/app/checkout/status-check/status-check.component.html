@@ -1,0 +1,58 @@
+<div>
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="checkoutFormGroup">
+      <form [formGroup]="checkoutFormGroup">
+        <ng-template matStepLabel i18n="@@checkout-id">Checkout ID</ng-template>
+        <mat-form-field>
+          <input matInput i18n-placeholder="@@checkout-id" placeholder="Checkout ID" formControlName="id" required>
+        </mat-form-field>
+      </form>
+      <div>
+        <button mat-button matStepperNext i18n="@@cart-checkout-stepper-next" (click)="fetchCheckout()">Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="checkoutFormGroup">
+      <form [formGroup]="checkoutFormGroup">
+        <ng-template matStepLabel i18n="@@checkout-information-title">Checkout Information</ng-template>
+        <div *ngIf="fetchError" class="error" i18n="@@checkout-status-fetching-information-error">
+          Something went wrong with fetching checkout information!
+        </div>
+        <div *ngIf="checkout !== null">
+          <app-checkout-status-details
+            i18n-title="@@checkout-status-queue-title"
+            title="Your order is in queue!"
+            i18n-description="@@checkout-status-queue-description"
+            description="We will start processing your checkout as soon as possible. Please, wait."
+            *ngIf="checkout.status === 'queue'"></app-checkout-status-details>
+          <app-checkout-status-details
+            i18n-title="@@checkout-status-received-title"
+            title="We have received your order!"
+            i18n-description="@@checkout-status-received-description"
+            description="We received your order and we will pack it as soon as possible. Please, wait."
+            *ngIf="checkout.status === 'received'"></app-checkout-status-details>
+          <app-checkout-status-details
+            i18n-title="@@checkout-status-packed-title"
+            title="Your order is packed!"
+            i18n-description="@@checkout-status-received-description"
+            description="We packed your order. We will send it to you soon. Please, wait."
+            *ngIf="checkout.status === 'packed'"></app-checkout-status-details>
+          <div *ngIf="checkout.status === 'sent'">
+            <app-checkout-status-details
+              i18n-title="@@checkout-status-sent-title"
+              title="Your order is sent!"
+              i18n-description="@@checkout-status-sent-description"
+              description="We sent your order. Thanks for your purchase! Please wait until delivery."></app-checkout-status-details>
+            <p *ngIf="!(checkout.track_number === '' || checkout.track_number === null)"><span i18n="@@checkout-status-tracking-number">Tracking number</span>: {{checkout.track_number}}</p>
+          </div>
+        </div>
+        <div *ngIf="checkout === null">
+          <span><span i18n="@@checkout-status-fetching-information">Fetching information about checkout</span> #{{this.checkoutFormGroup.get('id').value}}</span>
+          <mat-spinner mode="indeterminate" [diameter]="30"></mat-spinner>
+        </div>
+      </form>
+      <div>
+        <button mat-button matStepperPrevious i18n="@@cart-checkout-stepper-back">Back</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

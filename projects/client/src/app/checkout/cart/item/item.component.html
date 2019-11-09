@@ -1,0 +1,15 @@
+<mat-list-item>
+  <img mat-list-avatar src="/api/products/{{position.product.id}}/photo?size=100" [alt]=[position.product.name] />
+  <h4 mat-line>{{position.product.name}}</h4>
+  <mat-chip-list class="chips"><mat-chip color="accent" selected *ngIf="amountAvailable() < position.quantity" i18n="@@cart-item-preorder">Preorder</mat-chip></mat-chip-list>
+  <p mat-line>{{currency}} {{position.product.price}}
+    <span *ngIf="amountAvailable() > 0">(<span i18n="@@product-available">available</span>: {{amountAvailable()}})</span>
+    <span *ngIf="amountAvailable() < 1">(<span i18n="@@product-preorder-only">preorder-only</span>)</span>
+  </p>
+  <mat-form-field>
+    <input type="number" matInput i18n-placeholder="@@cart-item-quantity" placeholder="Quantity" value="{{position.quantity}}" (change)="updateQuantity($event)">
+  </mat-form-field>
+  <a mat-icon-button (click)="removeFromCart()" aria-hidden="false">
+    <mat-icon>delete</mat-icon>
+  </a>
+</mat-list-item>
