@@ -3,22 +3,18 @@
 }
 
 .sticky-header {
-  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-
-  z-index: 16;
 }
 
 .content {
-  margin-top: 16px;
+  margin-top: 80px;
+  margin-bottom: 16px;
   max-width: 960px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-
-  min-height: 100vh;
 }
 
 .loading-bar {
@@ -30,5 +26,18 @@
 }
 
 mat-nav-list {
-  min-width: 200px;
+  min-width: 240px;
+}
+
+mat-sidenav-content {
+  min-height: 100vh;
+}
+
+.snav-icon {
+  margin-right: 24px;
+}
+
+.position-fixed {
+  position: fixed;
+  z-index: 99999 !important;
 }

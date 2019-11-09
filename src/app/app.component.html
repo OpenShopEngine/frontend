@@ -5,39 +5,15 @@
   mode="indeterminate"></mat-progress-bar>
 
 <div class="example-container">
-  <mat-toolbar class="sticky-header" color="primary">
-    <mat-toolbar-row>
-      <a mat-icon-button (click)="snav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </a>
-      <a mat-button routerLink="/">{{config["general.title"] || "OpenShop"}}</a>
-      <span class="spacer" *ngIf="!mobileQuery.matches"></span>
-      <div *ngIf="!mobileQuery.matches">
-        <a mat-icon-button routerLink="/cart" aria-hidden="false" aria-label="Shopping cart">
-          <mat-icon matBadge="{{cartService.getCount()}}" matBadgeColor="accent">shopping_cart</mat-icon>
-        </a>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>public</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item *ngFor="let locale of locales" (click)="setLocale(locale.id)">{{locale.title}}</button>
-        </mat-menu>
-        <button mat-icon-button *ngIf="isAuthorized" (click)="logout()">
-          <mat-icon>exit_to_app</mat-icon>
-        </button>
-      </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
   <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav mode="over">
+    <mat-sidenav #snav mode="over" fixedInViewport="true">
       <mat-nav-list>
         <div *ngIf="mobileQuery.matches">
           <a mat-list-item routerLink="/cart" (click)="snav.toggle(false)">
-            <mat-icon mat-list-icon>shopping_cart</mat-icon> <span i18n="@@sidenav-cart-title">Cart</span>
+            <mat-icon mat-list-icon class="snav-icon">shopping_cart</mat-icon> <span i18n="@@sidenav-cart-title">Cart</span>
           </a>
           <a mat-list-item (click)="snavLocalizationExpanded = !snavLocalizationExpanded; snav.toggle(false)" role="button">
-            <mat-icon mat-list-icon>public</mat-icon> <span i18n="@@sidenav-language-title">Language</span>
+            <mat-icon mat-list-icon class="snav-icon">public</mat-icon> <span i18n="@@sidenav-language-title">Language</span>
           </a>
           <div *ngIf="snavLocalizationExpanded">
             <a mat-list-item role="button" *ngFor="let locale of locales" (click)="setLocale(locale.id)">
@@ -45,29 +21,52 @@
             </a>
           </div>
           <a mat-list-item (click)="logout()" role="button" *ngIf="isAuthorized">
-            <mat-icon mat-list-icon>exit_to_app</mat-icon> <span>Logout</span>
+            <mat-icon mat-list-icon class="snav-icon">exit_to_app</mat-icon> <span>Logout</span>
           </a>
           <mat-divider></mat-divider>
         </div>
         <div *ngIf="isAdmin">
           <a mat-list-item routerLink="/admin/products" (click)="snav.toggle(false)">
-            <mat-icon mat-list-icon>category</mat-icon> <span>Products</span>
+            <mat-icon mat-list-icon class="snav-icon">category</mat-icon> <span>Products</span>
           </a>
           <a mat-list-item routerLink="/admin/checkouts" (click)="snav.toggle(false)">
-            <mat-icon mat-list-icon>shopping_cart</mat-icon> <span>Checkouts</span>
+            <mat-icon mat-list-icon class="snav-icon">shopping_cart</mat-icon> <span>Checkouts</span>
           </a>
           <a mat-list-item routerLink="/admin/settings" (click)="snav.toggle(false)">
-            <mat-icon mat-list-icon>settings</mat-icon> <span>Settings</span>
+            <mat-icon mat-list-icon class="snav-icon">settings</mat-icon> <span>Settings</span>
           </a>
           <mat-divider></mat-divider>
         </div>
         <a mat-list-item routerLink="/checkout-status" (click)="snav.toggle(false)">
-          <mat-icon mat-list-icon>info</mat-icon> <span i18n="@@sidenav-checkout-status-title">Checkout Status</span>
+          <mat-icon mat-list-icon class="snav-icon">info</mat-icon> <span i18n="@@sidenav-checkout-status-title">Checkout Status</span>
         </a>
       </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
+      <mat-toolbar class="sticky-header position-fixed" color="primary">
+        <mat-toolbar-row>
+          <a mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </a>
+          <a mat-button routerLink="/">{{config["general.title"] || "OpenShop"}}</a>
+          <span class="spacer" *ngIf="!mobileQuery.matches"></span>
+          <div *ngIf="!mobileQuery.matches">
+            <a mat-icon-button routerLink="/cart" aria-hidden="false" aria-label="Shopping cart">
+              <mat-icon matBadge="{{cartService.getCount()}}" matBadgeColor="accent">shopping_cart</mat-icon>
+            </a>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>public</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item *ngFor="let locale of locales" (click)="setLocale(locale.id)">{{locale.title}}</button>
+            </mat-menu>
+            <button mat-icon-button *ngIf="isAuthorized" (click)="logout()">
+              <mat-icon>exit_to_app</mat-icon>
+            </button>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
       <div class="content">
         <router-outlet></router-outlet>
       </div>

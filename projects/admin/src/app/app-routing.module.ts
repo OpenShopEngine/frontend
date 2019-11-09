@@ -6,7 +6,6 @@ import {ProductsListComponent} from './products-list/products-list.component';
 import {ProductsEditComponent} from './products-edit/products-edit.component';
 import {CheckoutsListComponent} from './checkouts-list/checkouts-list.component';
 import {CheckoutsShowComponent} from './checkouts-show/checkouts-show.component';
-import {ConfigListComponent} from './config-list/config-list.component';
 import {SettingsComponent} from './settings/settings.component';
 
 
